@@ -10,6 +10,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { SignupEffect } from './store/user/signup.effect';
 import { APP_STATE } from './store/app.store';
 import { UserService } from './services/user/user.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 function load(http: HttpClient, service: SettingService) {
   return service.init();
@@ -18,9 +20,10 @@ function load(http: HttpClient, service: SettingService) {
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    MatSnackBarModule,
     StoreModule.forRoot(APP_STATE),
     EffectsModule.forRoot([SignupEffect]),
   ],
