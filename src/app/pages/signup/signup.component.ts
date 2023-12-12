@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 import { EMAIL_PATTERN, NAME_PATTERN } from 'src/app/consts/regexPattern';
 import { Loading } from 'src/app/models/loading';
 import { User } from 'src/app/models/user';
-import { LoaderComponent } from 'src/app/sharedComponents/loader.component';
+import { LoaderComponent } from 'src/app/sharedComponents/loader/loader.component';
 import { signupUser } from 'src/app/store/user/user.action';
 import { getLoadingStatus } from 'src/app/store/user/user.selector';
 
