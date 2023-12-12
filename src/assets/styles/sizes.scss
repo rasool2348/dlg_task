@@ -21,3 +21,9 @@ $element-height: 5vh;
   font-weight: 900;
   font-size: medium;
 }
+
+@mixin hint-font {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  font-size: small;
+}

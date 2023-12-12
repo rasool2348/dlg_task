@@ -84,6 +84,9 @@
       background-color: $white-color;
       color: $black-color;
     }
+    button:disabled {
+      cursor: not-allowed;
+    }
   }
 }
 
@@ -96,6 +99,15 @@ input {
 input[type="text"]:focus,
 input[type="email"]:focus {
   outline: $border-size solid $selected-border-color;
+}
+
+input.ng-invalid.ng-dirty {
+  outline: $border-size solid $error-border-color;
+}
+
+.error-hint {
+  color: $error-text-color;
+  @include hint-font;
 }
 
 @media only screen and (max-width: 992px) {

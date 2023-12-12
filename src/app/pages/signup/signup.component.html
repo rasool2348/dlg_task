@@ -1,27 +1,99 @@
 <div class="container">
   <div class="content">
     <div class="photo"></div>
-    <div class="form">
+    <form class="form" [formGroup]="userForm" (ngSubmit)="submitForm(userForm)">
       <div class="form-title">SIGN UP</div>
       <div class="form-content">
         <div class="form-content-name">
           <div class="">
             <label for="firstname">First Name</label>
-            <input type="text" id="firstname" />
+            <input type="text" id="firstname" formControlName="firstName" />
+            <span
+              class="error-hint"
+              *ngIf="
+                userForm.controls.firstName.dirty &&
+                userForm.controls.firstName.invalid &&
+                userForm.controls.firstName.hasError('required')
+              "
+              >firstName shouldn't be empty</span
+            >
+            <span
+              class="error-hint"
+              *ngIf="
+                userForm.controls.firstName.dirty &&
+                userForm.controls.firstName.invalid &&
+                userForm.controls.firstName.hasError('maxlength')
+              "
+              >firstName length are more than 40 chars</span
+            >
+            <span
+              class="error-hint"
+              *ngIf="
+                userForm.controls.firstName.dirty &&
+                userForm.controls.firstName.invalid &&
+                userForm.controls.firstName.hasError('pattern')
+              "
+              >firstName length should be at least 2 chars</span
+            >
           </div>
           <div>
             <label for="lastname">Last Name</label>
-            <input type="text" id="lastname" />
+            <input type="text" id="lastname" formControlName="lastName" />
+            <span
+              class="error-hint"
+              *ngIf="
+                userForm.controls.lastName.dirty &&
+                userForm.controls.lastName.invalid &&
+                userForm.controls.lastName.hasError('required')
+              "
+              >lastName shouldn't be empty</span
+            >
+            <span
+              class="error-hint"
+              *ngIf="
+                userForm.controls.lastName.dirty &&
+                userForm.controls.lastName.invalid &&
+                userForm.controls.lastName.hasError('maxlength')
+              "
+              >lastName length are more than 40 chars</span
+            >
+            <span
+              class="error-hint"
+              *ngIf="
+                userForm.controls.lastName.dirty &&
+                userForm.controls.lastName.invalid &&
+                userForm.controls.lastName.hasError('pattern')
+              "
+              >lastName length should be at least 2 chars</span
+            >
           </div>
         </div>
         <div class="form-content-email">
           <label for="email">Email</label>
-          <input type="email" id="email" />
+          <input type="email" id="email" formControlName="email" />
+          <span
+            class="error-hint"
+            *ngIf="
+              userForm.controls.email.dirty &&
+              userForm.controls.email.invalid &&
+              userForm.controls.email.hasError('required')
+            "
+            >email shouldn't be empty</span
+          >
+          <span
+            class="error-hint"
+            *ngIf="
+              userForm.controls.email.dirty &&
+              userForm.controls.email.invalid &&
+              userForm.controls.email.hasError('pattern')
+            "
+            >email address in invalid</span
+          >
         </div>
       </div>
       <div class="form-submit">
-        <button>Signup</button>
+        <button type="submit" [disabled]="userForm.invalid">Signup</button>
       </div>
-    </div>
+    </form>
   </div>
 </div>
