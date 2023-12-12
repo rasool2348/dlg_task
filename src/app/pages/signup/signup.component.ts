@@ -7,9 +7,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { EMAIL_PATTERN, NAME_PATTERN } from 'src/app/consts/regexPattern';
 import { Loading } from 'src/app/models/loading';
 import { User } from 'src/app/models/user';
+import { LoaderComponent } from 'src/app/sharedComponents/loader.component';
 import { signupUser } from 'src/app/store/user/user.action';
 import { getLoadingStatus } from 'src/app/store/user/user.selector';
 
@@ -18,9 +20,12 @@ import { getLoadingStatus } from 'src/app/store/user/user.selector';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, LoaderComponent],
 })
 export class SignupComponent implements OnInit {
+
+  public loadingStatus$!:Observable<boolean>;
+
   constructor(private _store: Store<Loading>, private _fb: FormBuilder) {}
 
   userForm = this._fb.group({
@@ -41,10 +46,11 @@ export class SignupComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this._store.select(getLoadingStatus).subscribe((data) => console.log(data));
+    this.loadingStatus$ = this._store.select(getLoadingStatus);
   }
 
   submitForm(userForm: typeof this.userForm) {
+    this.userForm.reset();
     this._store.dispatch(signupUser(userForm.value as User));
   }
 }

@@ -15,7 +15,7 @@
                 userForm.controls.firstName.invalid &&
                 userForm.controls.firstName.hasError('required')
               "
-              >firstName shouldn't be empty</span
+              >firstname shouldn't be empty</span
             >
             <span
               class="error-hint"
@@ -24,7 +24,7 @@
                 userForm.controls.firstName.invalid &&
                 userForm.controls.firstName.hasError('maxlength')
               "
-              >firstName length are more than 40 chars</span
+              >firstname length are more than 40 chars</span
             >
             <span
               class="error-hint"
@@ -33,7 +33,7 @@
                 userForm.controls.firstName.invalid &&
                 userForm.controls.firstName.hasError('pattern')
               "
-              >firstName length should be at least 2 chars</span
+              >firstname length should be at least 2 chars</span
             >
           </div>
           <div>
@@ -46,7 +46,7 @@
                 userForm.controls.lastName.invalid &&
                 userForm.controls.lastName.hasError('required')
               "
-              >lastName shouldn't be empty</span
+              >lastname shouldn't be empty</span
             >
             <span
               class="error-hint"
@@ -55,7 +55,7 @@
                 userForm.controls.lastName.invalid &&
                 userForm.controls.lastName.hasError('maxlength')
               "
-              >lastName length are more than 40 chars</span
+              >lastname length are more than 40 chars</span
             >
             <span
               class="error-hint"
@@ -64,7 +64,7 @@
                 userForm.controls.lastName.invalid &&
                 userForm.controls.lastName.hasError('pattern')
               "
-              >lastName length should be at least 2 chars</span
+              >lastname length should be at least 2 chars</span
             >
           </div>
         </div>
@@ -92,7 +92,12 @@
         </div>
       </div>
       <div class="form-submit">
-        <button type="submit" [disabled]="userForm.invalid">Signup</button>
+        <button type="submit" [disabled]="userForm.invalid">
+          <app-loader
+            *ngIf="(loadingStatus$ | async) == true; else text"
+          ></app-loader
+          ><ng-template #text>Signup</ng-template>
+        </button>
       </div>
     </form>
   </div>

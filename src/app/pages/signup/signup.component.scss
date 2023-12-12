@@ -80,10 +80,6 @@
       line-height: 1;
       cursor: pointer;
     }
-    button:hover {
-      background-color: $white-color;
-      color: $black-color;
-    }
     button:disabled {
       cursor: not-allowed;
     }
@@ -134,3 +130,4 @@ input.ng-invalid.ng-dirty {
     }
   }
 }
+
