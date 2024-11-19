@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  node: circleci/node@20.14.0
+  node: circleci/node@6.3.0
 jobs:
   build_and_test: # this can be any name you choose
     executor: node/default # use the default executor defined within the orb
