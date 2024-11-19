@@ -1,0 +1,48 @@
+1# Couldn't automatically generate a config from your source code.
+2# This is a generic template to serve as a base for your custom config
+3# See: https://circleci.com/docs/configuration-reference
+4# Stacks detected: cicd:empty:
+5version: 2.1
+6jobs:
+7  test:
+8    docker:
+9      - image: cimg/base:stable
+10    steps:
+11      - checkout
+12      # Replace this with a real test runner invocation
+13      - run:
+14          name: Run tests
+15          command: echo 'replace me with real tests!' && false
+16  build:
+17    docker:
+18      - image: cimg/base:stable
+19    steps:
+20      - checkout
+21      # Replace this with steps to build a package, or executable
+22      - run:
+23          name: Build an artifact
+24          command: touch example.txt
+25      - store_artifacts:
+26          path: example.txt
+27  deploy:
+28    docker:
+29      - image: cimg/base:stable
+30    steps:
+31      # Replace this with steps to deploy to users
+32      - run:
+33          name: deploy
+34          command: '#e.g. ./deploy.sh'
+35      - run:
+36          name: found empty repo
+37          command: ':'
+38workflows:
+39  example:
+40    jobs:
+41      - test
+42      - build:
+43          requires:
+44            - test
+45      - deploy:
+46          requires:
+47            - test
+48
