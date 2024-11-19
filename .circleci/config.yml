@@ -16,7 +16,7 @@ jobs:
           name: Build app
       - persist_to_workspace:
           root: ~/dist
-          paths:
+          paths: 
             - .
 workflows:
   build_test_deploy: # this can be any name you choose
